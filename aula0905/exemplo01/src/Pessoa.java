@@ -1,4 +1,4 @@
-public class Pessoa {
+public class Pessoa implements Comparable<Pessoa> {
     private int id;
     private String nome;
 
@@ -38,5 +38,10 @@ public class Pessoa {
     @Override
     public boolean equals(Object o) {
         return ((o instanceof Pessoa) && ((Pessoa)o).id == this.id);
+    }
+
+    @Override
+    public int compareTo(Pessoa o) {
+        return Integer.compare(this.id, o.id);
     }
 }
