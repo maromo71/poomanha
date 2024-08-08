@@ -91,7 +91,7 @@ Contribuições são bem-vindas! Se você encontrar um erro ou tiver sugestões 
 
 ## Contato
 
-Para dúvidas ou mais informações, entre em contato com o professor responsável pelo curso, [Seu Nome](mailto:seuemail@fatec.br).
+Para dúvidas ou mais informações, entre em contato com o professor responsável pelo curso, [Maromo](mailto:marcos.moraes6@fatec.sp.gov.br).
 
 ---
 
