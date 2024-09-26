@@ -46,4 +46,29 @@ public abstract class Conta {
     public void setSaldo(double saldo) {
         this.saldo = saldo;
     }
+
+    public void depositar(double valor) {
+        this.saldo += valor; //acrescimo ao saldo
+    }
+
+    public void sacar(double valor) {
+        if(this.saldo >= valor) {
+            this.saldo -= valor;
+            cobrarTarifa();
+        }else{
+            throw new IllegalArgumentException("Sem saldo para saque");
+        }
+    }
+
+    @Override
+    public String toString() {
+        return "Dados da conta: \n" +
+                "Num: " + numero + "\n" +
+                "Cliente: " + nomeCliente + "\n" +
+                "Agencia: " + nomeAgencia + "\n" +
+                "Saldo da Conta: " + saldo + "\n";
+    }
+
+    //método abstrato para cobrarTarifa por transacao
+    abstract  void cobrarTarifa();
 }

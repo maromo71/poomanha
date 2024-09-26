@@ -17,4 +17,25 @@ public class Corrente extends Conta{
     public void setLimite(double limite) {
         this.limite = limite;
     }
+
+    @Override
+    public void sacar(double valor) {
+        if(valor <= (getSaldo() + limite)){
+            setSaldo(getSaldo() - valor);
+            cobrarTarifa();
+        }else{
+            throw new IllegalArgumentException("Sem saldo/limite");
+        }
+    }
+
+    @Override
+    public String toString() {
+        return super.toString() +
+                "Limite: " + limite;
+    }
+
+    @Override
+    void cobrarTarifa() {
+        setSaldo(getSaldo() - 1.0);
+    }
 }
