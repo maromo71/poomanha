@@ -4,8 +4,10 @@ import model.Caixa;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.WindowEvent;
+import java.awt.event.WindowListener;
 
-public class CaixaView extends JFrame {
+public class CaixaView extends JFrame implements WindowListener {
     private Caixa caixa;
     private Dimension dLabel, dTextField, dFrame, dTextArea, dButton;
     private Label lblValor, lblSaldo;
@@ -15,6 +17,8 @@ public class CaixaView extends JFrame {
 
     //método contrutor - construir a janela
     public CaixaView() {
+        //Instanciando o objeto caixa
+        caixa = new Caixa();
         //Definir a aparencia da janela
         dFrame = new Dimension(350,400);
         dLabel = new Dimension(40,20);
@@ -73,6 +77,45 @@ public class CaixaView extends JFrame {
         txtMsg.setSize(dTextArea);
         txtMsg.setLocation(25, 220);
         add(txtMsg);
+        //adicionar comportamento listeners
+        addWindowListener(this);
     }
 
+    @Override
+    public void windowOpened(WindowEvent e) {
+
+    }
+
+    @Override
+    public void windowClosing(WindowEvent e) {
+        JOptionPane.showMessageDialog(
+                null,
+                "Fechando com cuidado!"
+        );
+    }
+
+    @Override
+    public void windowClosed(WindowEvent e) {
+
+    }
+
+    @Override
+    public void windowIconified(WindowEvent e) {
+
+    }
+
+    @Override
+    public void windowDeiconified(WindowEvent e) {
+
+    }
+
+    @Override
+    public void windowActivated(WindowEvent e) {
+
+    }
+
+    @Override
+    public void windowDeactivated(WindowEvent e) {
+
+    }
 }
