@@ -151,7 +151,7 @@ public class CaixaView extends JFrame implements WindowListener, ActionListener 
         if(e.getSource() == cmdRetirada){
             double valor = Double.parseDouble(txtValor.getText());
             if(caixa.sacar(valor)){
-                txtMsg.append("Saque efetuado com sucesso: R$ " + valor + "\n");
+                txtMsg.append("Saque efetuado com sucesso: R$ " + caixa.getSaldo() + "\n");
             }else{
                 txtMsg.append("Sem saldo suficiente para o saque \n");
             }
