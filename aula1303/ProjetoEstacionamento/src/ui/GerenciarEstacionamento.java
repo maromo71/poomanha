@@ -16,7 +16,7 @@ public class GerenciarEstacionamento {
         carro2.setMarca("Hyundai");
         carro2.setModelo("Santa Fé");
         carro2.setAnoFab(2018);
-        carro2.setModelo("FUJ-9090");
+        carro2.setPlaca("FUJ-9090");
 
         Pessoa pessoa1 = new Pessoa();
         pessoa1.setNome("Maromo");
@@ -27,6 +27,10 @@ public class GerenciarEstacionamento {
         pessoa1.adicionarCarro(carro1);
         pessoa1.adicionarCarro(carro2);
         //imprimir os dados da pessoa 1.
+        pessoa1.imprimir();
+
+        //remover o carro1
+        pessoa1.removerCarro(carro1);
         pessoa1.imprimir();
 
     }
