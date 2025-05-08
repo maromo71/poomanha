@@ -1,10 +1,9 @@
 package view;
 
-
 import model.Conta;
 import model.ContaCorrente;
 import model.Poupanca;
-import org.w3c.dom.ls.LSOutput;
+
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,7 +12,7 @@ public class GerenciarContas {
     private List<Conta> listaDeContas = new ArrayList<>();
 
     public static void main(String[] args) {
-        GerenciarContas gc = new GerenciarContas();
+        Conta.GerenciarContas gc = new Conta.GerenciarContas();
         //Duas correntes novas + 1 poupanca
         ContaCorrente conta1 = new ContaCorrente(1, "Carlos", 1000.0);
         ContaCorrente conta2 = new ContaCorrente(2, "Maria", 1000.0);
