@@ -104,27 +104,41 @@ public class Tela extends JFrame implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         if(e.getSource() == cmdDepositar){
             //logica do depositar aqui
-            double valor = Double.parseDouble(txtValor.getText());
-            caixa.depositar(valor);
-            txtMsg.append("Depositado com sucesso! Valor " + valor + "\n");
-            JOptionPane.showMessageDialog(null,
-                    "Sucesso, depositado.",
-                    "Sucesso", JOptionPane.INFORMATION_MESSAGE);
-            txtValor.setText("");
-            txtValor.requestFocus();
-            return;
+            try{
+                double valor = Double.parseDouble(txtValor.getText());
+                caixa.depositar(valor);
+                txtMsg.append("Depositado com sucesso! Valor " + valor + "\n");
+                JOptionPane.showMessageDialog(null,
+                        "Sucesso, depositado.",
+                        "Sucesso", JOptionPane.INFORMATION_MESSAGE);
+                txtValor.setText("");
+                txtValor.requestFocus();
+                return;
+            }catch (Exception erro){
+                JOptionPane.showMessageDialog(null,
+                        "Erro: " + erro.getMessage(),
+                        "Erro", JOptionPane.ERROR_MESSAGE);
+            }
+
         }
         if(e.getSource() == cmdSacar){
             //logica do sacar aqui
-            double valor = Double.parseDouble(txtValor.getText());
-            caixa.sacar(valor);
-            txtMsg.append("Sacado com sucesso! Valor " + valor + "\n");
-            JOptionPane.showMessageDialog(null,
-                    "Sucesso, sacado.",
-                    "Sucesso", JOptionPane.INFORMATION_MESSAGE);
-            txtValor.setText("");
-            txtValor.requestFocus();
-            return;
+            try{
+                double valor = Double.parseDouble(txtValor.getText());
+                caixa.sacar(valor);
+                txtMsg.append("Sacado com sucesso! Valor " + valor + "\n");
+                JOptionPane.showMessageDialog(null,
+                        "Sucesso, sacado.",
+                        "Sucesso", JOptionPane.INFORMATION_MESSAGE);
+                txtValor.setText("");
+                txtValor.requestFocus();
+                return;
+            }catch (Exception erro){
+                JOptionPane.showMessageDialog(null,
+                        "Erro: " + erro.getMessage(),
+                        "Erro", JOptionPane.ERROR_MESSAGE);
+            }
+
         }
         if(e.getSource() == cmdConsultar){
             //logica do consultar
