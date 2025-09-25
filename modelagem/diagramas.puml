@@ -1,0 +1,67 @@
+@startuml
+' Define um estilo mais limpo para o diagrama
+skinparam classAttributeIconSize 0
+skinparam linetype ortho
+
+' --- CLASSES DO DOMÍNIO (Models) ---
+
+class Cliente {
+  - id: int
+  - nome: String
+  - email: String
+  + toString(): String
+}
+
+class Produto {
+  - id: int
+  - descricao: String
+  - preco: double
+  + toString(): String
+}
+
+class Pedido {
+  - id: long
+  - data: LocalDate
+  + adicionarItem(item: PedidoDetalhe): void
+  + calcularTotal(): double
+  + imprimirResumo(): void
+}
+
+class PedidoDetalhe {
+  - quantidade: int
+  - precoUnitario: double
+  + getSubtotal(): double
+  + toString(): String
+}
+
+' --- CLASSES DE UTILIDADE E EXECUÇÃO ---
+
+class Utilitarios {
+  + {static} carregarClientes(): List<Cliente>
+  + {static} carregarProdutos(): List<Produto>
+}
+
+class GerenciarApp {
+  - {static} clientes: List<Cliente>
+  - {static} produtos: List<Produto>
+  - {static} pedidos: List<Pedido>
+  + {static} main(args: String[]): void
+  + {static} efetuarPedido(sc: Scanner): void
+  + {static} listarPedidos(): void
+}
+
+
+' --- RELACIONAMENTOS ---
+
+' Relacionamentos de Associação e Composição
+Cliente "1" -- "0..*" Pedido : "faz"
+Pedido "1" *-- "1..*" PedidoDetalhe : "contém"
+Produto "1" -- "0..*" PedidoDetalhe : "é um"
+
+' Relacionamentos de Dependência (uso)
+GerenciarApp ..> Pedido : "cria e gerencia"
+GerenciarApp ..> Utilitarios : "utiliza para carregar dados"
+Utilitarios ..> Cliente : "cria"
+Utilitarios ..> Produto : "cria"
+
+@enduml

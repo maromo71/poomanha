@@ -1,0 +1,26 @@
+@startuml
+' Aparência do diagrama
+left to right direction
+skinparam packageStyle rectangle
+
+' Ator do sistema
+actor "Usuário" as user
+
+' Delimitação do sistema
+rectangle "Sistema de Gerenciamento de Pedidos" {
+  usecase "Efetuar Pedido" as UC1
+  usecase "Listar Pedidos Efetuados" as UC2
+  usecase "Selecionar Cliente" as UC3
+  usecase "Adicionar Item ao Pedido" as UC4
+}
+
+' Relacionamento do Ator com os Casos de Uso principais
+user -- UC1
+user -- UC2
+
+' Relacionamento de inclusão (tarefas obrigatórias)
+' Para efetuar um pedido, é obrigatório selecionar um cliente e adicionar itens.
+UC1 ..> UC3 : <<include>>
+UC1 ..> UC4 : <<include>>
+
+@enduml

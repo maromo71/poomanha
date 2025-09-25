@@ -6,7 +6,7 @@ import java.util.List;
 
 public class Utilitarios {
 
-    public List<Cliente> carregarClientes(){
+    public static List<Cliente> carregarClientes(){
         List<Cliente> clientes = new ArrayList<>();
         clientes.add(new Cliente(1, "Marcos Moraes", "maromo@gmail.com"));
         clientes.add(new Cliente(2, "Maria Santos", "mssantos@gmail.com"));
@@ -15,7 +15,7 @@ public class Utilitarios {
         return clientes;
     }
 
-    public List<Produto> carregarProdutos(){
+    public static List<Produto> carregarProdutos(){
         List<Produto> produtos = new ArrayList<>();
         produtos.add(new Produto(101, "Notebook Gamer", 4500.00));
         produtos.add(new Produto(102, "Mouse sem fio", 120.50));
