@@ -37,4 +37,8 @@ public abstract class Conta {
                 "Data Abertura: " + dataDeAbertura + "\n" +
                 "Saldo: " + saldo + "\n";
     }
+
+    public double getSaldo() {
+        return saldo;
+    }
 }
