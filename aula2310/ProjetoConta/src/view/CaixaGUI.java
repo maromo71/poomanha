@@ -1,23 +1,33 @@
 package view;
 
+import model.Caixa;
+
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
-public class CaixaGUI extends JFrame {
+public class CaixaGUI extends JFrame implements ActionListener {
     private Label lblValor, lblSaldo;
     private TextField txtValor, txtSaldo;
     private Button btnDepositar, btnSacar, btnConsultar, btnSair;
     private TextArea txtMsg;
     private Dimension dButton, dTextField, dLabel, dTextArea, dFrame;
+    //precisamo adicionar o Caixa
+    private Caixa caixa;
 
     public CaixaGUI(){
+        caixa = new Caixa();
         adicionarComponentes();
         definirAparencia();
         adicionarComportamentos();
     }
 
     private void adicionarComportamentos() {
-
+        btnSair.addActionListener(this);
+        btnDepositar.addActionListener(this);
+        btnConsultar.addActionListener(this);
+        btnSacar.addActionListener(this);
     }
 
     private void definirAparencia() {
@@ -76,4 +86,53 @@ public class CaixaGUI extends JFrame {
         add(txtMsg);
     }
 
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        if(e.getSource() == btnSair){
+            System.exit(0); //Fecha o programa
+        }
+        if(e.getSource() == btnConsultar){
+            txtSaldo.setText(Double.toString(caixa.getSaldo()));
+            JOptionPane.showMessageDialog(
+                    null,
+                    "Saldo Atual: " + txtSaldo.getText(),
+                    "Saldo consultado",
+                    JOptionPane.INFORMATION_MESSAGE
+            );
+            txtMsg.append("Saldo atual: " + txtSaldo.getText() + "\n");
+        }
+        if(e.getSource()==btnDepositar){
+            double valor = Double.parseDouble(txtValor.getText());
+            if(caixa.depositar(valor)){
+                txtMsg.append("Depositado com sucesso!\n");
+                JOptionPane.showMessageDialog(null,
+                        "Depósito efetuado com sucesso!",
+                        "Sucesso",
+                        JOptionPane.INFORMATION_MESSAGE);
+            }else{
+                JOptionPane.showMessageDialog(null,
+                        "Valor deve ser positivo");
+            }
+            txtValor.setText("");
+            txtValor.requestFocus();
+            return;
+        }
+        if(e.getSource()==btnSacar){
+            double valor = Double.parseDouble(txtValor.getText());
+            if(caixa.sacar(valor)){
+                txtMsg.append("Sacado com sucesso!\n");
+                JOptionPane.showMessageDialog(null,
+                        "Sacado com sucesso!\n",
+                        "Sucesso",
+                        JOptionPane.INFORMATION_MESSAGE);
+            }else{
+                JOptionPane.showMessageDialog(null,
+                        "Sem saldo suficiente para o saque",
+                        "Erro",
+                        JOptionPane.ERROR_MESSAGE);
+            }
+            txtValor.setText("");
+            txtValor.requestFocus();
+        }
+    }
 }
