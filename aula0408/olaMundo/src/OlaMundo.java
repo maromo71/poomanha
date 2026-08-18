@@ -1,4 +1,5 @@
-package PACKAGE_NAME;
-
 public class OlaMundo {
+    public static void main(String[] args) {
+        System.out.println("Olá Mundão de Deus");
+    }
 }
