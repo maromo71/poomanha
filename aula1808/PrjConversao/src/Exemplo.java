@@ -7,5 +7,7 @@ public class Exemplo {
         String strSalario = "3001.89";
         double novoSalario = Double.parseDouble(strSalario) * 1.10;
         System.out.println("Novo Salario: " + novoSalario);
+        String strSoma = Integer.toString(soma);
+        String strSoma2 = String.valueOf(soma);
     }
 }

@@ -38,4 +38,24 @@ public class Apolice {
     public void setValorPremio(double valorPremio) {
         this.valorPremio = valorPremio;
     }
+
+    //4. Metodo com logica de programação
+
+    /**
+     * Função para cálculo do premio ao beneficiário
+     * POr faixa de idade.
+     * Até 25 anos não desconta percentual. Recebe Premio integral
+     * de 26 a 49 recebe 75% do premio
+     * de 50 pra cima recebe 50% do premio
+     * @return valor do premio que deve ser pago ao beneficiário.
+     */
+    public double pagarPremioBeneficiario(){
+        if(idade < 25 ){
+            return valorPremio;
+        }
+        if(idade <50){
+            return valorPremio * 0.75;
+        }
+        return valorPremio *.5;
+    }
 }
