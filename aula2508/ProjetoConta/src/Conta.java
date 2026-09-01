@@ -37,20 +37,24 @@ public class Conta {
     }
 
     public boolean sacar(double valor){
-        if(valor <= saldo){
+        if(valor <= saldo) {
             this.saldo -= valor;
             return true;
         }
         return false;
     }
-    public void depositar(double valor){
+    public boolean depositar(double valor){
+        if(valor < 0){
+            return false;
+        }
         this.saldo+= valor;
+        return true;
     }
     public void imprimir(){
         System.out.println("Dados da Conta: ");
         System.out.println("conta = " + conta);
         System.out.println("agencia = " + agencia);
         System.out.println("nomeCliente = " + nomeCliente);
-        System.out.println("saldo = " + saldo);
+        System.out.printf("saldo = %.2f\n",  saldo);
     }
 }
