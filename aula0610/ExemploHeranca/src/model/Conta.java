@@ -40,5 +40,11 @@ public abstract class Conta {
                 "Saldo: " + saldo + "\n";
     }
 
+    public int getNumero() {
+        return numero;
+    }
 
+    public double getSaldo() {
+        return saldo;
+    }
 }
