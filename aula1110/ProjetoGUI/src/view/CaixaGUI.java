@@ -98,11 +98,20 @@ public class CaixaGUI extends JFrame implements ActionListener {
         }
         //Para o botao depositar
         if(e.getSource()==btnDepositar){
-            double valor = Double.parseDouble(txtValor.getText());
-            if(caixa.depositar(valor)){
-                txtMsg.append("Deposito efetuado com sucesso\n");
-            }else{
-                txtMsg.append("Valor invalido para o deposito\n");
+            try{
+                double valor = Double.parseDouble(txtValor.getText());
+                if(caixa.depositar(valor)){
+                    txtMsg.append("Deposito efetuado com sucesso\n");
+                }else{
+                    txtMsg.append("Valor invalido para o deposito\n");
+                }
+            } catch (NumberFormatException ex) {
+                JOptionPane.showMessageDialog(
+                        null,
+                        "Erro: Você deve digite um valor numérico",
+                        "Aconteceu um erro",
+                        JOptionPane.ERROR_MESSAGE
+                );
             }
         }
         //Para o botao sacar
